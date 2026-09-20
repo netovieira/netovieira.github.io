@@ -14,7 +14,6 @@ import { useEffect, useState } from "react";
 import portraitAsset from "@/assets/anthero-professional-portrait.png";
 import casualPortraitAsset from "@/assets/anthero-casual.jpeg";
 import meuwattAsset from "@/assets/meuwatt.jpg";
-import mouraverseAsset from "@/assets/mouraverse.jpg";
 import nexoAsset from "@/assets/nexo.jpg";
 import theroAsset from "@/assets/thero.jpg";
 import { Button } from "@/components/ui/button";
@@ -79,11 +78,11 @@ const content = {
         category: "Energia · SaaS industrial",
         statement: "Monitoramento de precisão para operações de energia solar em escala.",
         problem:
-          "Operações solares industriais precisam transformar telemetria dispersa em decisões confiáveis e rápidas.",
+          "Usinas solares em operação geram telemetria em alto volume e formatos inconsistentes entre fabricantes de inversores — sem um pipeline confiável, sinais de falha chegam tarde demais para evitar perda de geração.",
         contribution:
-          "Arquitetura de software e desenho da ingestão de dados em tempo real por webhooks.",
+          "Defini a arquitetura de ingestão em tempo real via webhooks e um esquema de normalização que absorve a variação entre equipamentos sem exigir release a cada nova integração.",
         solution:
-          "Uma plataforma de monitoramento que centraliza desempenho energético e dá visibilidade operacional às usinas.",
+          "Uma plataforma que processa a telemetria assim que ela chega, centraliza o desempenho energético por usina e transforma anomalias em alertas operacionais acionáveis — não apenas em gráficos para revisar depois.",
         stack: ["Arquitetura", "Tempo real", "Webhooks", "SaaS"],
         href: "https://www.meuwatt.com.br/",
         image: meuwattAsset,
@@ -121,30 +120,54 @@ const content = {
         category: "Ferramentas para devs · Open source",
         statement: "Claude Code preparado para trabalho sério desde o primeiro comando.",
         problem:
-          "Assistentes de código começam sem o contexto, os critérios e as práticas específicas de cada projeto.",
+          "Assistentes de código como o Claude Code começam cada conversa sem contexto: não conhecem os critérios do projeto, suas convenções ou os erros já corrigidos antes — e repetem os mesmos deslizes.",
         contribution:
-          "Criação de uma suíte que prepara contexto, regras e execução sem impor dependências ao projeto.",
+          "Criei uma suíte que prepara automaticamente o ambiente de trabalho do Claude Code no início de cada projeto: um Engineering Operating System, indexação de arquitetura e agentes especializados, sem impor dependências ao projeto em si.",
         solution:
-          "Um ambiente reutilizável com geração de sistema, indexação, agentes especializados e mudanças verificáveis.",
+          "Um comando único (python thero.py) entrega contexto, regras e execução verificável — e opcionalmente já aciona Athena para indexar o projeto e Zeus para planejar antes de qualquer mudança.",
         stack: ["Python", "Claude Code", "Agent skills", "Open source"],
-        href: "https://netovieira.github.io/thero/",
+        href: "https://theroverse.github.io/thero/",
         image: theroAsset,
         imageAlt: "Captura da suíte Thero para Claude Code, com a mensagem \"Seu Claude Code. Pronto para trabalho sério.\"",
       },
       {
-        name: "Mouraverse",
-        category: "IA corporativa · Knowledge systems",
-        statement: "Memória hierárquica para dar contexto real a sistemas de inteligência artificial.",
+        name: "Athena",
+        category: "Ferramentas para devs · Open source",
+        statement: "Uma planta baixa do seu projeto, gerada e mantida pela IA.",
         problem:
-          "Conhecimento de produto e engenharia se perde entre código, documentos e decisões distribuídas.",
+          "Toda conversa nova com um assistente de IA começa do zero, reabrindo arquivo por arquivo até reconstruir o contexto que já existia na conversa anterior.",
         contribution:
-          "Desenho de um sistema proprietário de memória e arquitetura multiagente para bases complexas.",
+          "Criei um motor de resumo recursivo bottom-up: primeiro os arquivos, depois as pastas a partir dos resumos dos filhos, nunca relendo código bruto no nível de pasta.",
         solution:
-          "RAG recursivo que preserva a hierarquia do conhecimento e dá contexto especializado aos agentes Athena e Zeus.",
-        stack: ["RAG", "Multiagentes", "TypeScript", "Python", "Kubernetes"],
-        href: "https://avnt.notion.site/MOURAVERSE-18833d256cec80ce92f5cd45a6a4b4d8",
-        image: mouraverseAsset,
-        imageAlt: "Documentação pública do projeto Mouraverse",
+          "Um índice incremental em .athena/, cacheado por hash de conteúdo, que dá a qualquer IA (ou a você) uma visão real da arquitetura do projeto em segundos — sem gastar uma chamada em algo que não mudou.",
+        stack: ["Python", "Stdlib only", "Resumo recursivo", "Claude Code"],
+        href: "https://theroverse.github.io/athena/",
+      },
+      {
+        name: "Zeus",
+        category: "Ferramentas para devs · Open source",
+        statement: "Um plano de ação verificável antes da primeira linha de código.",
+        problem:
+          "Decidir por onde começar em um projeto grande normalmente significa abrir uma dezena de arquivos só para descobrir quais realmente importam — e ainda chutar o resto.",
+        contribution:
+          "Desenhei um planejador que nunca lê código-fonte diretamente: cruza a tarefa descrita em linguagem natural com os resumos já gerados pela Athena para decidir o que precisa mudar.",
+        solution:
+          "Um plano em Markdown com objetivo, arquivos selecionados, passo a passo e riscos, escrito em .claude/zeus-plan.md para revisão humana antes de qualquer execução — nunca aplicado automaticamente.",
+        stack: ["Python", "Stdlib only", "Planejamento", "Claude Code"],
+        href: "https://theroverse.github.io/zeus/",
+      },
+      {
+        name: "Genesis",
+        category: "Setup automation · Open source",
+        statement: "O setup pós-formatação do Windows 11, do zero à máquina pronta.",
+        problem:
+          "Formatar o Windows 11 significa uma tarde inteira reinstalando app por app, configurando WSL, SSH e o profile do terminal na mão — e descobrindo dias depois o que ficou faltando.",
+        contribution:
+          "Arquitetei um assistente de 17 etapas com um catálogo real de 68 apps via winget, detecção do que já está instalado, e uma ponte PowerShell↔WebView2 pra rodar tudo isso numa interface nativa sem instalador.",
+        solution:
+          "Um Genesis.exe de arquivo único: marca o que quer, revisa numa página só, clica em \"Instalar agora\" — e a suíte Claude Code (thero, Athena, Zeus) já sai instalada e configurada junto.",
+        stack: ["PowerShell", "WebView2", "winget", "ps2exe"],
+        href: "https://theroverse.github.io/genesis/",
       },
     ],
     journeyEyebrow: "02 — Trajetória",
@@ -246,11 +269,11 @@ const content = {
         category: "Energy · Industrial SaaS",
         statement: "Precision monitoring for solar energy operations at scale.",
         problem:
-          "Industrial solar operations need to turn scattered telemetry into reliable, timely decisions.",
+          "Solar plants in production emit high-volume telemetry in inconsistent formats across inverter manufacturers — without a reliable pipeline, failure signals arrive too late to prevent lost generation.",
         contribution:
-          "Software architecture and real-time data ingestion design through webhooks.",
+          "I designed the real-time webhook ingestion architecture and a normalization schema that absorbs variation across equipment without a release for every new integration.",
         solution:
-          "A monitoring platform that centralizes energy performance and gives solar plants operational visibility.",
+          "A platform that processes telemetry as it arrives, centralizes energy performance per plant, and turns anomalies into actionable operational alerts — not just charts to review later.",
         stack: ["Architecture", "Real time", "Webhooks", "SaaS"],
         href: "https://www.meuwatt.com.br/",
         image: meuwattAsset,
@@ -288,30 +311,54 @@ const content = {
         category: "Developer tools · Open source",
         statement: "Claude Code ready for serious work from the very first command.",
         problem:
-          "Coding assistants start without each project's context, quality standards, and specific practices.",
+          "Coding assistants like Claude Code start every conversation with zero context: no awareness of the project's standards, conventions, or the mistakes already corrected before — so they repeat the same ones.",
         contribution:
-          "A suite that prepares context, rules, and execution without imposing dependencies on the project.",
+          "I built a suite that automatically prepares Claude Code's working environment at the start of every project: an Engineering Operating System, architecture indexing, and specialist agents, without imposing dependencies on the project itself.",
         solution:
-          "A reusable environment with system generation, indexing, specialist agents, and verifiable changes.",
+          "A single command (python thero.py) delivers context, rules, and verifiable execution — optionally triggering Athena to index the project and Zeus to plan before any change is made.",
         stack: ["Python", "Claude Code", "Agent skills", "Open source"],
-        href: "https://netovieira.github.io/thero/",
+        href: "https://theroverse.github.io/thero/",
         image: theroAsset,
         imageAlt: "Screenshot of the Thero suite for Claude Code, showing an in-app headline about being ready for serious work",
       },
       {
-        name: "Mouraverse",
-        category: "Enterprise AI · Knowledge systems",
-        statement: "Hierarchical memory that gives artificial intelligence genuine context.",
+        name: "Athena",
+        category: "Developer tools · Open source",
+        statement: "A blueprint of your project, generated and kept current by AI.",
         problem:
-          "Product and engineering knowledge gets lost across code, documents, and distributed decisions.",
+          "Every new conversation with an AI assistant starts from zero, reopening file after file to rebuild the context that already existed in the previous one.",
         contribution:
-          "Design of a proprietary memory system and multi-agent architecture for complex knowledge bases.",
+          "I built a bottom-up recursive summarization engine: files first, then folders from their children's summaries, never re-reading raw code at the folder level.",
         solution:
-          "Recursive RAG that preserves knowledge hierarchy and gives specialized context to Athena and Zeus agents.",
-        stack: ["RAG", "Multi-agent", "TypeScript", "Python", "Kubernetes"],
-        href: "https://avnt.notion.site/MOURAVERSE-18833d256cec80ce92f5cd45a6a4b4d8",
-        image: mouraverseAsset,
-        imageAlt: "Public Mouraverse project documentation",
+          "An incremental index under .athena/, cached by content hash, that gives any AI (or you) a real view of the project's architecture in seconds — without spending a call on anything that hasn't changed.",
+        stack: ["Python", "Stdlib only", "Recursive summarization", "Claude Code"],
+        href: "https://theroverse.github.io/athena/",
+      },
+      {
+        name: "Zeus",
+        category: "Developer tools · Open source",
+        statement: "A verifiable action plan before the first line of code.",
+        problem:
+          "Deciding where to start on a large project usually means opening a dozen files just to find the ones that actually matter — and still guessing at the rest.",
+        contribution:
+          "I designed a planner that never reads source code directly: it cross-references the task, described in natural language, with the summaries Athena already generated to decide what needs to change.",
+        solution:
+          "A Markdown plan with objective, selected files, step-by-step, and risks, written to .claude/zeus-plan.md for human review before any execution — never auto-applied.",
+        stack: ["Python", "Stdlib only", "Task planning", "Claude Code"],
+        href: "https://theroverse.github.io/zeus/",
+      },
+      {
+        name: "Genesis",
+        category: "Setup automation · Open source",
+        statement: "The post-format Windows 11 setup, from zero to a ready machine.",
+        problem:
+          "Formatting Windows 11 means a whole afternoon reinstalling apps one by one, configuring WSL, SSH, and the terminal profile by hand — and finding out days later what got skipped.",
+        contribution:
+          "I architected a 17-step assistant with a real 68-app catalog via winget, detection of what's already installed, and a PowerShell↔WebView2 bridge to run all of it in a native interface with no installer.",
+        solution:
+          "A single-file Genesis.exe: check what you want, review it on one page, click \"Install now\" — and the Claude Code suite (thero, Athena, Zeus) comes installed and configured right along with it.",
+        stack: ["PowerShell", "WebView2", "winget", "ps2exe"],
+        href: "https://theroverse.github.io/genesis/",
       },
     ],
     journeyEyebrow: "02 — Journey",
@@ -481,7 +528,7 @@ function Portfolio() {
                 <div className="project-shade absolute inset-0" />
                 <div className="relative flex h-full flex-col justify-between p-6 sm:p-8">
                   <div className="flex items-start justify-between"><span className="text-[10px] font-semibold uppercase text-accent">0{index + 1} / {project.category}</span>{"href" in project && project.href ? <a href={project.href} target="_blank" rel="noreferrer" className="icon-link" aria-label={`${copy.visit}: ${project.name}`}><ArrowUpRight size={18} /></a> : <span className="text-[10px] uppercase text-muted-foreground">{copy.privateProject}</span>}</div>
-                  <div><h3 className="font-display text-4xl font-semibold sm:text-5xl">{project.name}</h3><p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">{project.statement}</p><div className="project-detail mt-6 grid gap-4 border-t border-border pt-5 sm:grid-cols-2"><p className="text-xs leading-relaxed text-muted-foreground">{project.contribution}</p><div className="flex flex-wrap content-start gap-2">{project.stack.slice(0, 3).map((item) => <span key={item} className="border border-border bg-background/60 px-2 py-1 text-[9px] uppercase text-muted-foreground">{item}</span>)}</div></div></div>
+                  <div><h3 className="font-display text-4xl font-semibold sm:text-5xl">{project.name}</h3><p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">{project.statement}</p><div className="project-detail mt-6 space-y-4 border-t border-border pt-5"><div className="grid gap-4 sm:grid-cols-2"><div><p className="text-[9px] font-semibold uppercase tracking-wide text-accent">{copy.problem}</p><p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{project.problem}</p></div><div><p className="text-[9px] font-semibold uppercase tracking-wide text-accent">{copy.contribution}</p><p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{project.contribution}</p></div></div><div><p className="text-[9px] font-semibold uppercase tracking-wide text-accent">{copy.solution}</p><p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{project.solution}</p></div><div className="flex flex-wrap gap-2 pt-1">{project.stack.slice(0, 3).map((item) => <span key={item} className="border border-border bg-background/60 px-2 py-1 text-[9px] uppercase text-muted-foreground">{item}</span>)}</div></div></div>
                 </div>
               </article>
             ))}
