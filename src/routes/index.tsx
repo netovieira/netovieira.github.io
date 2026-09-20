@@ -103,7 +103,7 @@ const content = {
       },
       {
         name: "Nexo",
-        category: "IA local · Open source",
+        category: "IA local · Freeware",
         statement: "Uma máquina organizada sem nuvem, assinatura ou linha de comando.",
         problem:
           "Downloads acumulam documentos, imagens, mídia e instaladores sem contexto ou organização consistente.",
@@ -270,7 +270,7 @@ const content = {
       },
       {
         name: "Nexo",
-        category: "Local AI · Open source",
+        category: "Local AI · Freeware",
         statement: "An organized machine without cloud storage, subscriptions, or a command line.",
         problem:
           "Downloads pile up documents, images, media, and installers without context or consistent organization.",
